@@ -7,7 +7,10 @@
     domains: ['images.unsplash.com', 'media-exp1.licdn.com'],
   },
   sass: true,
-  reactStrictMode: true
+  reactStrictMode: true,
+  experimental: {
+    outputStandalone: true
+  }
 };
 
 module.exports = nextConfig;
