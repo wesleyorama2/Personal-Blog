@@ -24,10 +24,14 @@ COPY . .
 # RUN yarn build
 
 # If using npm comment out above and use below instead
+ARG AWS_DEFAULT_REGION 
+ARG AWS_ACCESS_KEY_ID 
+ARG AWS_SECRET_ACCESS_KEY
 RUN npm run build
 
 # Production image, copy all the files and run next
 FROM node:16-alpine AS runner
+
 WORKDIR /app
 
 ENV NODE_ENV production
