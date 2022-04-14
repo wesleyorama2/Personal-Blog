@@ -41,7 +41,7 @@ export default function Layout({ children }) {
         <nav className="bg-white py-2 md:py-4 shadow-xl shadow-sky-500/40">
           <div className="container px-4 mx-auto md:flex md:items-center">
             <div className="flex justify-between items-center">
-              <Link href="/" className="flex font-bold text-xl">
+              <Link href="/" passHref className="flex font-bold text-xl">
                 <svg className="h-6 fill-current text-orange-900 hover:text-rose-500 pr-4" xmlns="http://www.w3.org/2000/svg" id="svg3365" viewBox="0 0 21.232 21.26" version="1.1" >
                   <g id="layer1" transform="translate(-364.38 -521.73)">
                   <g id="g3328" transform="matrix(.93168 0 0 .93168 -56.251 -254.07)">
@@ -53,7 +53,7 @@ export default function Layout({ children }) {
                   </g>
                 </svg>
               </Link>
-              <Link href="/">
+              <Link href="/" passHref>
                 <span className="block text-orange-900 hover:text-rose-500">wbrown.dev</span>
               </Link>
               <button className="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle">
