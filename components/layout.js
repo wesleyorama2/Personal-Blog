@@ -1,17 +1,45 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Script from 'next/script';
 
 export default function Layout({ children }) {
   return (
     /* jshint ignore:start */
       <div className="flex flex-col h-screen bg-gradient-to-br from-sky-500 to-indigo-500 subpixel-antialiased font-sans">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css"></link>
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></Script>
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/shell.min.js"></Script>
+        <Head>
+          <script
+            data-partytown-config
+            dangerouslySetInnerHTML={{
+              __html: `
+                partytown = {
+                  lib: "/_next/static/~partytown/",
+                  forward: ["dataLayer.push"],
+                  debug: true
+                };
+              `,
+            }}
+          />
+        </Head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css"></link>
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js" strategy="worker"></Script>
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/shell.min.js" strategy="worker"></Script>
+      <Script id="highlight" strategy="worker">hljs.highlightAll();</Script>
+      <Script
+        strategy="worker"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG_ID}`}
+      />
+      <Script id="google-analytics" strategy="worker">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${process.env.NEXT_PUBLIC_GTAG_ID}');
+        `}
+      </Script>
       <header>
         <nav className="bg-white py-2 md:py-4 shadow-xl shadow-sky-500/40">
           <div className="container px-4 mx-auto md:flex md:items-center">
-
             <div className="flex justify-between items-center">
               <Link href="/" className="flex font-bold text-xl">
                 <svg className="h-6 fill-current text-orange-900 hover:text-rose-500 pr-4" xmlns="http://www.w3.org/2000/svg" id="svg3365" viewBox="0 0 21.232 21.26" version="1.1" >
@@ -32,7 +60,6 @@ export default function Layout({ children }) {
                 <i className="fas fa-bars"></i>
               </button>
             </div>
-
             <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
               <Link href="/blog"><a className="font-bold p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-cyan-300 hover:text-gray-700 transition-colors duration-300">Blog</a></Link>
               <Link href="/projects"><a className="font-bold p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-cyan-300 hover:text-gray-700 transition-colors duration-300">Projects</a></Link>

@@ -9,7 +9,8 @@
   sass: true,
   reactStrictMode: true,
   experimental: {
-    outputStandalone: true
+    outputStandalone: true,
+    nextScriptWorkers: true
   },
   future: {
     webpack5: true, // by default, if you customize webpack config, they switch back to version 4. 
