@@ -18,7 +18,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "s3-cached": "^4.0.6",
-    "sharp": "^0.30.3"
+    "sharp": "^0.30.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
